@@ -1,16 +1,30 @@
 import { readFileSync, writeFileSync } from 'node:fs';
-import { createHash } from 'node:crypto';
-import { spawnSync } from 'node:child_process';
-import { resolve, relative, isAbsolute, sep } from 'node:path';
+import { resolve, relative, dirname } from 'node:path';
 import { assertManifest, assertTestCatalog } from '@aqp/qa-framework-template';
+import { APP_INPUTS, SUITE_INPUTS, committedIdentity, inventory, containedFile, assertHistoricalCommit, sha256, validateBinding } from './evidence-binding.mjs';
 
-const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const hash = sha256;
 const root = process.cwd();
 const mode = process.argv[2];
-const reportPath = process.argv[3] ?? 'test-results/results.json';
-const relativeReport = relative(root, resolve(reportPath));
-if (isAbsolute(relativeReport) || relativeReport.startsWith(`..${sep}`)) throw new Error('Report must be within the suite repository');
-const report = JSON.parse(readFileSync(reportPath, 'utf8'));
+const relativeReport = relative(root, resolve(process.argv[3] ?? 'test-results/results.json'));
+const reportPath = containedFile(root, relativeReport);
+const evidenceRoot = dirname(reportPath);
+const executionFile = containedFile(evidenceRoot, 'execution.json');
+const execution = JSON.parse(readFileSync(executionFile, 'utf8'));
+if (execution.evidenceSchemaVersion !== 2) throw new Error('Unbound historical report; commit source then run npm run verify:local');
+if (containedFile(evidenceRoot, execution.report.file) !== reportPath) throw new Error('Execution record links a different report');
+const discoveryPath = containedFile(evidenceRoot, execution.discovery.file);
+if (!execution.appDirectory?.startsWith('.verification-work/')) throw new Error('Untrusted staged app path');
+const stagedApp = containedFile(root, execution.appDirectory, { directory: true });
+const appRoot = resolve('../quality-lab-app');
+const currentSources = { suite: committedIdentity(root, SUITE_INPUTS), app: committedIdentity(appRoot, APP_INPUTS) };
+assertHistoricalCommit(root, execution.sources.suite);
+assertHistoricalCommit(appRoot, execution.sources.app);
+const admission = validateBinding({ execution, reportBytes: readFileSync(reportPath), discoveryBytes: readFileSync(discoveryPath), currentSources,
+  currentRuntime: inventory(stagedApp, ['dist', ...APP_INPUTS]), currentDependencies: {
+    suite: inventory(root, ['node_modules'], { dependencyLinks: true }), app: inventory(stagedApp, ['node_modules'], { dependencyLinks: true }),
+  } });
+const report = admission.report;
 const contract = JSON.parse(readFileSync('catalog/business-contract.json', 'utf8'));
 const manifest = JSON.parse(readFileSync('team-manifest.json', 'utf8'));
 assertManifest(manifest);
@@ -31,7 +45,7 @@ function visit(suite) {
     }[testId] : criteria[number];
     if (!criterionIds?.length || criterionIds.some((id) => !contract.criteria[id])) throw new Error(`Unmapped test ${testId}`);
     const file = spec.file.replaceAll('\\', '/');
-    const source = readFileSync(resolve('tests', file));
+    const source = readFileSync(containedFile(resolve('tests'), file));
     const passed = spec.tests.every((test) => test.results.length === 1 && test.results[0].status === 'passed' && test.status === 'expected');
     tests.push({ testId, criterionIds, scenarioIds: [`SCENARIO-${testId}`], ownerSquad: manifest.ownerSquad,
       level: ui ? 'e2e' : 'api', file: `tests/${file}`, runnerTitle: spec.title,
@@ -49,18 +63,17 @@ if (mode === 'definitions') {
     templateVersion: manifest.templateVersion, scopeId: contract.scopeId, reportPath: relativeReport.replaceAll('\\', '/'),
     reportSha256: hash(readFileSync(reportPath)), limitations: ['Observed against isolated memory store, not PostgreSQL.', 'Working-tree source hashes are not a Git commit.'], tests }, null, 2) + '\n');
 } else if (mode === 'snapshot') {
-  const paths = [...new Set(['fixtures', 'playwright.config.ts', 'package.json', 'package-lock.json', 'vendor', ...tests.map((test) => test.file)])];
-  for (const path of paths) {
-    const tracked = spawnSync('git', ['ls-files', '--error-unmatch', path], { encoding: 'utf8', shell: false });
-    if (tracked.status !== 0) throw new Error(`Commit source before creating TestCatalog: ${path}`);
-  }
-  const clean = spawnSync('git', ['diff', '--quiet', 'HEAD', '--', ...paths], { shell: false });
-  if (clean.status !== 0) throw new Error('Test source differs from HEAD; commit it before creating TestCatalog');
-  const commit = spawnSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8', shell: false }).stdout.trim();
+  const commit = admission.suiteCommit;
   const catalog = { schemaVersion: '1.0.0', id: 'catalog-reference-local-v1', mode: manifest.mode, provenance: manifest.provenance,
     repository: manifest.testRepository, commit, templateVersion: manifest.templateVersion, scopeId: contract.scopeId,
     tests: tests.map((test) => { const result = { ...test }; delete result.sourceSha256; return result; }) };
   assertTestCatalog(catalog);
   writeFileSync('catalog/test-catalog.json', JSON.stringify(catalog, null, 2) + '\n');
+  writeFileSync('catalog/test-catalog-binding.json', JSON.stringify({ binding: admission.binding, executedSuiteCommit: commit,
+    currentSuiteHead: admission.currentSuiteHead, executedAppCommit: admission.appCommit,
+    executionPath: relative(root, executionFile).replaceAll('\\', '/'), executionSha256: hash(readFileSync(executionFile)),
+    reportPath: relativeReport.replaceAll('\\', '/'), reportSha256: execution.report.sha256,
+    catalogSha256: hash(readFileSync('catalog/test-catalog.json')),
+    limitation: 'Later documentation-only commits may have identical source bytes; the catalog always names the actually executed commit, never the later HEAD.' }, null, 2) + '\n');
   console.log(JSON.stringify({ commit, tests: tests.length, reportSha256: hash(readFileSync(reportPath)) }));
 } else throw new Error('Usage: node scripts/catalog.mjs definitions|snapshot <repository-local-report.json>');

@@ -1,0 +1,11 @@
+{
+  "typecheck": 0,
+  "historicalSnapshotRejectionExit": 1,
+  "fresh25TestRunPerformed": false,
+  "historicalRejectionExpected": true,
+  "unitTestCount": 30,
+  "focusedTests": 0,
+  "dateUtc": "2026-09-17T02:45:44.5272071Z",
+  "lint": 0,
+  "status": "source_fix_ready_for_coordinator_commit"
+}

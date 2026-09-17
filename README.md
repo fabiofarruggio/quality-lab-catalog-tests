@@ -19,7 +19,9 @@ $env:AQP_BROWSER_CHANNEL = 'chrome'
 npm run verify:local
 ```
 
-`verify:local` repeats clean installation, typecheck and all checks, then captures logs, JSON results, an actual browser screenshot, source hashes and limitations in a fresh `evidence/<UTC-run-id>/` directory. The application must be built and stable before starting. The fixture launches a separate local HTTP process and a fresh in-memory store **for every test**, uses only synthetic accounts and terminates each child in teardown. No shared mutable server or real customer data is used.
+`verify:local` requires committed, byte-clean suite and application inputs before executing tests. It repeats clean installation, lint, typecheck and binding-unit checks, copies exact committed application blobs into `.verification-work/<run-id>/app`, installs/builds that isolated copy, discovers the complete suite and executes it. It never rebuilds or trusts mutable `dist` in the sibling application repository. Both repositories must remain source-stable during the run.
+
+The execution record binds the report and discovery by SHA-256, run ID and time, plus before/after committed-source, installed-dependency and staged-runtime hashes. Logs, reports and a real screenshot are saved in a fresh `evidence/<UTC-run-id>/`. Staging is retained locally for admission checks and never committed. The fixture launches a separate HTTP process and fresh memory store **for every test**, uses synthetic accounts and terminates each child in teardown.
 
 ## What the checks prove
 
@@ -32,7 +34,9 @@ node scripts/catalog.mjs definitions evidence/<run-id>/playwright-results.json
 node scripts/catalog.mjs snapshot evidence/<run-id>/playwright-results.json
 ```
 
-Snapshot generation refuses dirty or untracked test-source paths. Do not substitute a bootstrap SHA for a commit containing the tests.
+Both commands require the adjacent version-2 execution record; historical unbound reports are rejected rather than retrofitted. Snapshot admission rechecks all relevant source/configuration/fixture/lock/manifest/business-contract bytes against their recorded Git blobs and the retained staged runtime/dependencies. Empty discovery, missing variants, retries, skips, stale/mutated reports, path escapes and input drift fail closed.
+
+The TestCatalog always names the **recorded execution commit**, never a later HEAD. A documentation-only later commit may be byte-equivalent; that equivalence is explicitly recorded in `catalog/test-catalog-binding.json`. Hashes establish consistency, not a signed attestation of trusted execution. Commit this source fix before the first new 25-test verification run.
 
 ## Honest limits
 

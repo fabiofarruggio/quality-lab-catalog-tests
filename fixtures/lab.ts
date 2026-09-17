@@ -1,5 +1,6 @@
 import { spawn } from 'node:child_process';
-import { resolve } from 'node:path';
+import { resolve, relative, isAbsolute, sep } from 'node:path';
+import { realpathSync } from 'node:fs';
 import { once } from 'node:events';
 import { test as common, expect } from '@aqp/qa-framework-template/fixtures';
 
@@ -10,7 +11,11 @@ interface LocalLab {
 
 export const test = common.extend<{ localLab: LocalLab }>({
   localLab: async ({}, use) => {
-    const appRoot = resolve('../quality-lab-app');
+    const appRoot = process.env.AQP_VERIFIED_APP_ROOT ? realpathSync(process.env.AQP_VERIFIED_APP_ROOT) : resolve('../quality-lab-app');
+    if (process.env.AQP_VERIFIED_APP_ROOT) {
+      const rel = relative(realpathSync('.verification-work'), appRoot);
+      if (!rel || isAbsolute(rel) || rel.startsWith(`..${sep}`)) throw new Error('Verified app must be within catalog staging');
+    }
     const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => ['PATH', 'SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP'].includes(key.toUpperCase())));
     // Maintainer-authored local HTTP harness only. No model, SaaS or repository tokens.
     const child = spawn(process.execPath, ['scripts/test-server.mjs'], { cwd: appRoot, env: { ...env, PORT: '0', LAB_SEED: 'reference' },

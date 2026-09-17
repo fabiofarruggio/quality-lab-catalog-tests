@@ -14,6 +14,7 @@
     "test:ui": "playwright test --project=chromium",
     "browser:install": "node scripts/install-browser.mjs",
     "verify:local": "node scripts/verify-local.mjs",
+    "test:binding": "node --test scripts/evidence-binding.test.mjs",
     "verify:generated": "node scripts/verify-generated.mjs",
     "typecheck": "tsc --noEmit"
   },
