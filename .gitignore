@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+.codegraph/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+playwright-report/
+test-results/
+.venv/
