@@ -1,0 +1,93 @@
+{
+  "checkedAt": "2026-09-17T14:22:32.938Z",
+  "status": "passed",
+  "mode": "offline_replay",
+  "executionKind": "deterministic_local_metadata_readback",
+  "node": {
+    "version": "v24.21.0",
+    "binarySha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32"
+  },
+  "commands": [
+    {
+      "command": "node evidence/runner-admission-inputs/verify.mjs",
+      "exitCode": 0,
+      "stdout": "verification.stdout.txt",
+      "stderr": "verification.stderr.txt"
+    },
+    {
+      "command": "node --test evidence/runner-admission-inputs/verify.test.mjs",
+      "exitCode": 0,
+      "stdout": "tests.stdout.txt",
+      "stderr": "tests.stderr.txt"
+    }
+  ],
+  "metadataVerifierTests": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "readback": {
+    "status": "passed",
+    "mode": "offline_replay",
+    "executionKind": "deterministic_local_metadata_readback",
+    "tests": 25,
+    "cleanedGroups": 26,
+    "metadataSha256": "7a813875df6e153981f24f8ba8ef7b7221357a95e28c62f672fe46d5dee87da5",
+    "bindingSha256": "cd4e60121d4bd5554979dd02c50f6c6550f1f7f20bddaa6c1a88bcb8b34633a9",
+    "suiteCommit": "b4dc4ab9b21a1a15a52681e810a6779a31f17468",
+    "currentMetadataHead": "b4dc4ab9b21a1a15a52681e810a6779a31f17468",
+    "controllerCommit": "f21d4874a0aa4f5653d7c33e285a268087c7484b",
+    "archiveCommit": "48c4a9b47b74cfeec42d3ef8fa4a9a5028978945",
+    "suiteInputHashes": 21,
+    "controllerInputHashes": 34,
+    "artifactHashes": 30,
+    "checkoutNewlines": [
+      {
+        "path": "AGENTS.md",
+        "currentSha256": "c46ba12d6508308a6f7e98302902e9fe27d43f4fcd5721b909b52459cfcf29f1",
+        "committedSha256": "231b7197fd6809028d40e95bfdebddab6ee546316375e1bc1e24a4a1c4b8e774",
+        "difference": "CRLF_only_non_execution_input"
+      }
+    ],
+    "verifierInputs": {
+      "binding.json": "cd4e60121d4bd5554979dd02c50f6c6550f1f7f20bddaa6c1a88bcb8b34633a9",
+      "initial-tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "initial-tests.stdout.txt": "c5b06c9f5047f6f8c8a1698be2b7d857f25af2d355464f2c93992d83de6b7784",
+      "initial-verification.stderr.txt": "402a63683238d4186d6606ce7547e9daa3fddd717d44eadb791f96cb5d5410ab",
+      "initial-verification.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "README.md": "83d2d1d894984a64cdafa5c4a4e0d9a199f11fcc075e1fe7692f2946a6a73f4f",
+      "verify.mjs": "44df982e132c574aad9928292cd4e72c0ec11a1bc63e6a2cb7154f1ac523c060",
+      "verify.test.mjs": "3948fd56ac4552f857e98bb26fb0259def2bb5f03147aa4527efce6668738738"
+    },
+    "newExecution": false,
+    "releaseAcceptance": false,
+    "ordersAdoption": false
+  },
+  "artifacts": {
+    "catalog/runner-admission.json": "7a813875df6e153981f24f8ba8ef7b7221357a95e28c62f672fe46d5dee87da5",
+    "evidence/runner-admission-inputs/binding.json": "cd4e60121d4bd5554979dd02c50f6c6550f1f7f20bddaa6c1a88bcb8b34633a9",
+    "evidence/runner-admission-inputs/initial-tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/runner-admission-inputs/initial-tests.stdout.txt": "c5b06c9f5047f6f8c8a1698be2b7d857f25af2d355464f2c93992d83de6b7784",
+    "evidence/runner-admission-inputs/initial-verification.stderr.txt": "402a63683238d4186d6606ce7547e9daa3fddd717d44eadb791f96cb5d5410ab",
+    "evidence/runner-admission-inputs/initial-verification.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/runner-admission-inputs/README.md": "83d2d1d894984a64cdafa5c4a4e0d9a199f11fcc075e1fe7692f2946a6a73f4f",
+    "evidence/runner-admission-inputs/tests.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/runner-admission-inputs/tests.stdout.txt": "07c42ac55ce825e7cf7edb2b0a10f14c253f5beb962253de6ed572597dd78673",
+    "evidence/runner-admission-inputs/verification.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/runner-admission-inputs/verification.stdout.txt": "542dc16a151c5a9f33dfb1b13e29f9b7b28e3b8de6ad86fcfb2f0146d74b983c",
+    "evidence/runner-admission-inputs/verify.mjs": "44df982e132c574aad9928292cd4e72c0ec11a1bc63e6a2cb7154f1ac523c060",
+    "evidence/runner-admission-inputs/verify.test.mjs": "3948fd56ac4552f857e98bb26fb0259def2bb5f03147aa4527efce6668738738"
+  },
+  "installedValidatorInputs": {
+    "package.json": "0750ac720893a243706f2e8f6371f6b9ecd09c1e5636fe3a64baca7e07a7758d",
+    "dist/index.js": "88b4e5928dfc24baf7176e3440a27bbc4b05dfe4d42eebc1468620397f13cd90",
+    "dist/manifest.js": "89eab05e4ef5c2b3043d80043c7a094fd56f123bdfc1fa7e6d1861ce830a8a43"
+  },
+  "limitations": [
+    "Read-only metadata verification, not a new application-suite run or generic loader integration result.",
+    "The source revision remains b4dc4ab, not an eventual metadata-only commit.",
+    "No live inference, semantic approval, publication, Orders adoption or milestone acceptance."
+  ],
+  "preservedFailure": "initial-*.txt: pre-existing bootstrap AGENTS.md CRLF-only mismatch; exact executable/evidence input hashing unchanged."
+}

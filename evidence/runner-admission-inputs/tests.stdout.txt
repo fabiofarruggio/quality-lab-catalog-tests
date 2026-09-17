@@ -1,0 +1,42 @@
+✔ positive: strict schemas and exact recorded25 identities map to26 cleaned PG groups (16.4954ms)
+✔ positive: source blobs, current bytes, archived artifacts and metadata hashes bind (8578.5023ms)
+✔ reject schema-forbidden inference field (4.1062ms)
+✔ reject live mode (3.8287ms)
+✔ reject synthetic example mislabeled as run (2.9981ms)
+✔ reject producer revision substitution (3.4086ms)
+✔ reject policy substitution (3.1067ms)
+✔ reject registry substitution (3.853ms)
+✔ reject future provenance (5.9867ms)
+✔ reject old memory execution commit (3.2653ms)
+✔ reject foreign repository (3.1275ms)
+✔ reject wrong template (2.9683ms)
+✔ reject foreign scope (3.3635ms)
+✔ reject duplicate logical test (2.962ms)
+✔ reject missing test (2.7029ms)
+✔ reject foreign owner (4.8264ms)
+✔ reject renamed runner title (4.6546ms)
+✔ reject foreign variant (3.9211ms)
+✔ reject escaping file (3.9716ms)
+✔ reject unsupported criterion (4.3831ms)
+✔ reject stale story material (3.8129ms)
+✔ reject invented scenario (3.662ms)
+✔ reject removed discovery (3.6624ms)
+✔ reject extra planned variant (3.8426ms)
+✔ reject second-attempt result (3.555ms)
+✔ reject memory store relabeled (3.4971ms)
+✔ reject cleanup not proved (3.1984ms)
+✔ reject duplicate group (3.239ms)
+✔ reject skipped result (3.9337ms)
+✔ reject missing source hash (3.6284ms)
+✔ reject evidence digest substitution (3.4656ms)
+✔ reject publication claim (3.4972ms)
+✔ reject metadata HEAD masquerades as executed (5.7348ms)
+✔ reject changed catalog bytes binding (5.1432ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9060.5351

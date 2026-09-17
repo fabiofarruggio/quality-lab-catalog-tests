@@ -1,0 +1,68 @@
+✔ positive: strict schemas and exact recorded25 identities map to26 cleaned PG groups (16.3249ms)
+✖ positive: source blobs, current bytes, archived artifacts and metadata hashes bind (4320.1325ms)
+✔ reject schema-forbidden inference field (3.6735ms)
+✔ reject live mode (3.3167ms)
+✔ reject synthetic example mislabeled as run (4.1192ms)
+✔ reject producer revision substitution (3.6429ms)
+✔ reject policy substitution (3.3425ms)
+✔ reject registry substitution (3.4746ms)
+✔ reject future provenance (6.7255ms)
+✔ reject old memory execution commit (3.9987ms)
+✔ reject foreign repository (3.4284ms)
+✔ reject wrong template (3.2362ms)
+✔ reject foreign scope (3.4555ms)
+✔ reject duplicate logical test (3.6737ms)
+✔ reject missing test (4.0119ms)
+✔ reject foreign owner (5.119ms)
+✔ reject renamed runner title (4.5273ms)
+✔ reject foreign variant (4.6306ms)
+✔ reject escaping file (4.5801ms)
+✔ reject unsupported criterion (3.9029ms)
+✔ reject stale story material (4.1163ms)
+✔ reject invented scenario (4.5186ms)
+✔ reject removed discovery (3.5676ms)
+✔ reject extra planned variant (3.7067ms)
+✔ reject second-attempt result (3.4792ms)
+✔ reject memory store relabeled (3.8463ms)
+✔ reject cleanup not proved (3.2491ms)
+✔ reject duplicate group (3.4152ms)
+✔ reject skipped result (3.4411ms)
+✔ reject missing source hash (3.6445ms)
+✔ reject evidence digest substitution (3.9863ms)
+✔ reject publication claim (3.6197ms)
+✔ reject metadata HEAD masquerades as executed (3.4283ms)
+✔ reject changed catalog bytes binding (4.1265ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 33
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6825.4113
+
+✖ failing tests:
+
+test at evidence\runner-admission-inputs\verify.test.mjs:9:1
+✖ positive: source blobs, current bytes, archived artifacts and metadata hashes bind (4320.1325ms)
+  AssertionError [ERR_ASSERTION]: existing file changed: AGENTS.md
+  + actual - expected
+  
+  + 'c46ba12d6508308a6f7e98302902e9fe27d43f4fcd5721b909b52459cfcf29f1'
+  - '231b7197fd6809028d40e95bfdebddab6ee546316375e1bc1e24a4a1c4b8e774'
+  
+      at verifyFiles (file:///F:/Programacion/qa-agent-platform/quality-lab-catalog-tests/evidence/runner-admission-inputs/verify.mjs:181:12)
+      at TestContext.<anonymous> (file:///F:/Programacion/qa-agent-platform/quality-lab-catalog-tests/evidence/runner-admission-inputs/verify.test.mjs:10:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'c46ba12d6508308a6f7e98302902e9fe27d43f4fcd5721b909b52459cfcf29f1',
+    expected: '231b7197fd6809028d40e95bfdebddab6ee546316375e1bc1e24a4a1c4b8e774',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
