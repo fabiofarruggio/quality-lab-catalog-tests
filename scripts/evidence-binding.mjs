@@ -4,7 +4,7 @@ import { resolve, relative, isAbsolute, sep, join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 export const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-export const SUITE_INPUTS = ['tests', 'fixtures', 'scripts', 'vendor', 'package.json', 'package-lock.json', 'playwright.config.ts',
+export const SUITE_INPUTS = ['tests', 'fixtures', 'scripts', 'vendor', 'package.json', 'package-lock.json', 'playwright.config.ts', 'playwright.sandbox.config.ts',
   'tsconfig.json', 'eslint.config.mjs', 'team-manifest.json', 'catalog/business-contract.json', '.gitattributes', '.npmrc'];
 export const APP_INPUTS = ['src', 'scripts', 'tests/support', 'migrations', 'package.json', 'package-lock.json',
   'tsconfig.json', 'tsconfig.server.json', 'vite.config.ts', 'index.html', '.gitattributes', '.npmrc'];

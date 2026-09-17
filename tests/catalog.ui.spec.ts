@@ -17,9 +17,10 @@ test.beforeEach(async ({ context, localLab, browser }, testInfo) => {
   });
 });
 
-test('QLAB-CAT-UI-001: shopper sees synthetic catalog and cannot purchase inactive item', async ({ page }) => {
+test('QLAB-CAT-UI-001: shopper sees synthetic catalog and cannot purchase inactive item', async ({ page, localLab }) => {
   await login(page);
-  await expect(page.getByLabel('Environment details')).toContainText('Test double — not PostgreSQL evidence');
+  await expect(page.getByLabel('Environment details')).toContainText(localLab.storeMode === 'postgres'
+    ? 'Local PostgreSQL laboratory' : 'Test double — not PostgreSQL evidence');
   await expect(page.locator('article.product')).toHaveCount(3);
   await expect(page.locator('#quantity-p-archived')).toBeDisabled();
   await expect(page.getByRole('button', { name: 'Save p-notebook' })).toHaveCount(0);

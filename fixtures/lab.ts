@@ -5,12 +5,30 @@ import { once } from 'node:events';
 import { test as common, expect } from '@aqp/qa-framework-template/fixtures';
 
 interface LocalLab {
-  url: string; storeMode: 'isolated_test_double'; databaseIntegrationVerified: false;
-  mode: 'offline_replay'; executionKind: 'deterministic_local'; testStorage: 'isolated_test_double';
+  url: string; storeMode: 'isolated_test_double' | 'postgres'; databaseIntegrationVerified?: false;
+  mode: 'offline_replay'; executionKind: 'deterministic_local'; testStorage: 'isolated_test_double' | null;
+  expectedAppCommit?: string;
 }
+export interface LabProfileOptions { labProfile: 'local_memory' | 'isolated_postgres'; expectedAppCommit: string }
 
-export const test = common.extend<{ localLab: LocalLab }>({
-  localLab: async ({}, use) => {
+export const test = common.extend<LabProfileOptions & { localLab: LocalLab }>({
+  labProfile: ['local_memory', { option: true }],
+  expectedAppCommit: ['', { option: true }],
+  localLab: async ({ playwright, labProfile, expectedAppCommit }, use) => {
+    if (labProfile === 'isolated_postgres') {
+      if (!/^[a-f0-9]{40}$/.test(expectedAppCommit)) throw new Error('Isolated profile requires the trusted expected application commit');
+      const url = 'http://127.0.0.1:3000';
+      const context = await playwright.request.newContext({ baseURL: url, timeout: 10_000, maxRedirects: 0 });
+      try {
+        expect(await (await context.get('/ready')).json()).toEqual({ ready: true, storeMode: 'postgres', seed: 'reference' });
+        expect(await (await context.get('/version')).json()).toMatchObject({ gitSha: expectedAppCommit, storeMode: 'postgres',
+          seed: 'reference', mode: 'offline_replay', executionKind: 'deterministic_local', testStorage: null });
+        // Fixture checks observed metadata only. The external trusted runner proves Docker/image/DB provenance.
+        await use({ url, storeMode: 'postgres', mode: 'offline_replay', executionKind: 'deterministic_local', testStorage: null, expectedAppCommit });
+      } finally { await context.dispose(); }
+      return;
+    }
+    if (labProfile !== 'local_memory') throw new Error('Unknown laboratory execution profile');
     const appRoot = process.env.AQP_VERIFIED_APP_ROOT ? realpathSync(process.env.AQP_VERIFIED_APP_ROOT) : resolve('../quality-lab-app');
     if (process.env.AQP_VERIFIED_APP_ROOT) {
       const rel = relative(realpathSync('.verification-work'), appRoot);

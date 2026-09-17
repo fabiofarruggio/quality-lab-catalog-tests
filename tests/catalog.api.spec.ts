@@ -1,12 +1,13 @@
 import { test, expect } from '../fixtures/lab.js';
 
-test('QLAB-CAT-001: readiness and version expose honest local identity', async ({ lab }) => {
+test('QLAB-CAT-001: readiness and version expose honest local identity', async ({ lab, localLab }) => {
   const ready = await lab.get('/ready');
-  expect(await ready.json()).toEqual({ ready: true, storeMode: 'isolated_test_double', seed: 'reference' });
+  expect(await ready.json()).toEqual({ ready: true, storeMode: localLab.storeMode, seed: 'reference' });
   const version = await lab.get('/version');
   expect(version.status()).toBe(200);
-  expect(await version.json()).toMatchObject({ appVersion: '0.1.0', seed: 'reference', storeMode: 'isolated_test_double', imageDigestVerified: false,
-    mode: 'offline_replay', executionKind: 'deterministic_local', testStorage: 'isolated_test_double' });
+  expect(await version.json()).toMatchObject({ appVersion: '0.1.0', seed: 'reference', storeMode: localLab.storeMode, imageDigestVerified: false,
+    mode: 'offline_replay', executionKind: 'deterministic_local', testStorage: localLab.testStorage });
+  if (localLab.storeMode === 'postgres') expect(await version.json()).toHaveProperty('gitSha', localLab.expectedAppCommit);
   expect(JSON.stringify(await version.json())).not.toMatch(/password|token|secret/i);
 });
 

@@ -25,6 +25,12 @@ The execution record binds the report and discovery by SHA-256, run ID and time,
 
 ## What the checks prove
 
+### Isolated PostgreSQL profile (integration pending)
+
+`playwright.sandbox.config.ts` selects a separate `isolated_postgres` fixture at fixed loopback `127.0.0.1:3000`. Only the trusted platform lab runner may supply `AQP_EXPECTED_APP_COMMIT` and provision the ephemeral database/application/browser containers. This profile requires Chromium's sandbox, disables retries and preserves all 25 reference test IDs and business assertions. The two environment-identity assertions explicitly distinguish PostgreSQL from the default memory test double.
+
+The profile does not provision Docker, expose a database credential or attest an image itself. Its source passed lint, typecheck and 30 evidence-binding tests before commit; the complete 25-variant isolated PostgreSQL run remains pending. Do not reuse the historical memory-store snapshot as evidence for this new profile or source revision. Rollback is limited to this configuration, its fixture branch, two identity assertions and the added configuration hash input.
+
 Authentication and authorization, seed values, positive integer prices, version increments, discount thresholds 9999/10000/10001, quantity boundaries/negatives, inactive items, stale quotes, client-total rejection, idempotent confirmation, and corresponding UI journeys. The shared `@aqp/qa-framework-template` library remains installed code, not a copied fixture fork.
 
 `catalog/business-contract.json` states original laboratory criteria. `catalog/test-definitions.json` maps observed runner IDs to those criteria. It is explicitly not an ExecutionEvidence record or remote TMS catalog. After the source is committed, a schema-valid TestCatalog can be created without inventing a commit:
