@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "catalog-reference-local-v1",
+  "mode": "offline_replay",
+  "provenance": {
+    "platformCommit": "7965339aa7ceb2393aa2862c4c4cb5a55ffb2eef",
+    "policyHash": "1baf42762a77bf0e7eb6f5d6c721317fc98e1b2bf06276360f3cafc2262240a2",
+    "agentRegistryHash": "1477c74db4ad9395e20c7eaf1ca8b95bdb8e6c4f168f75f16ef840ae5257e6ea",
+    "createdAt": "2026-09-17T02:04:47.8658540Z",
+    "syntheticExample": false
+  },
+  "repository": "quality-lab-catalog-tests",
+  "commit": "a2f7ea68b07c1edace68239e462651fc9975db90",
+  "templateVersion": "0.1.0",
+  "scopeId": "quality-lab-reference-catalog-v1",
+  "tests": [
+    {
+      "testId": "QLAB-CAT-001",
+      "criterionIds": [
+        "LAB-IDENTITY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-001"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-001: readiness and version expose honest local identity",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-002",
+      "criterionIds": [
+        "LAB-AUTH"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-002"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-002: unauthenticated requests cannot read catalog",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-003",
+      "criterionIds": [
+        "LAB-AUTH"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-003"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-003: invalid credentials do not issue a token",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-004",
+      "criterionIds": [
+        "LAB-PRODUCT"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-004"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-004: seeded products have integer positive prices and active status",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-005",
+      "criterionIds": [
+        "LAB-RBAC"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-005"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-005: shopper cannot mutate a product and forbidden write leaves data intact",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-006",
+      "criterionIds": [
+        "LAB-PRICE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-006"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-006: catalog editor updates price and increments price version",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-007-zero",
+      "criterionIds": [
+        "LAB-PRICE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-007-zero"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-007-zero: editor cannot store an invalid price",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-007-negative",
+      "criterionIds": [
+        "LAB-PRICE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-007-negative"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-007-negative: editor cannot store an invalid price",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-007-fraction",
+      "criterionIds": [
+        "LAB-PRICE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-007-fraction"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-007-fraction: editor cannot store an invalid price",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-008-9999",
+      "criterionIds": [
+        "LAB-DISCOUNT"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-008-9999"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-008-9999: discount threshold uses server-side integer cents",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-008-10000",
+      "criterionIds": [
+        "LAB-DISCOUNT"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-008-10000"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-008-10000: discount threshold uses server-side integer cents",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-008-10001",
+      "criterionIds": [
+        "LAB-DISCOUNT"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-008-10001"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-008-10001: discount threshold uses server-side integer cents",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-009-0",
+      "criterionIds": [
+        "LAB-QUANTITY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-009-0"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-009-0: quote rejects invalid quantity",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-009-11",
+      "criterionIds": [
+        "LAB-QUANTITY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-009-11"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-009-11: quote rejects invalid quantity",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-009-1.5",
+      "criterionIds": [
+        "LAB-QUANTITY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-009-1.5"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-009-1.5: quote rejects invalid quantity",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-010",
+      "criterionIds": [
+        "LAB-QUANTITY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-010"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-010: quantity boundaries 1 and 10 remain purchasable",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-011",
+      "criterionIds": [
+        "LAB-ACTIVE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-011"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-011: inactive product cannot be quoted",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-012",
+      "criterionIds": [
+        "LAB-STALE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-012"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-012: changed price invalidates an existing quote",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-013",
+      "criterionIds": [
+        "LAB-TOTAL"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-013"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-013: client cannot override authoritative quote total",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-014",
+      "criterionIds": [
+        "LAB-IDEMPOTENCY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-014"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/catalog.api.spec.ts",
+      "runnerTitle": "QLAB-CAT-014: identical confirmation key replays one order and changed body conflicts",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CATALOG-READINESS",
+      "criterionIds": [
+        "LAB-READY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CATALOG-READINESS"
+      ],
+      "ownerSquad": "catalog",
+      "level": "api",
+      "file": "tests/readiness.spec.ts",
+      "runnerTitle": "QLAB-CATALOG-READINESS: lab is ready",
+      "variants": [
+        "api"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "api"
+      ],
+      "criticality": "high",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-UI-001",
+      "criterionIds": [
+        "LAB-ACTIVE",
+        "LAB-RBAC"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-UI-001"
+      ],
+      "ownerSquad": "catalog",
+      "level": "e2e",
+      "file": "tests/catalog.ui.spec.ts",
+      "runnerTitle": "QLAB-CAT-UI-001: shopper sees synthetic catalog and cannot purchase inactive item",
+      "variants": [
+        "chromium"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "ui"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-UI-002",
+      "criterionIds": [
+        "LAB-DISCOUNT",
+        "LAB-IDEMPOTENCY"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-UI-002"
+      ],
+      "ownerSquad": "catalog",
+      "level": "e2e",
+      "file": "tests/catalog.ui.spec.ts",
+      "runnerTitle": "QLAB-CAT-UI-002: quoted discount and repeated confirmation preserve one order",
+      "variants": [
+        "chromium"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "ui"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-UI-003",
+      "criterionIds": [
+        "LAB-STALE"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-UI-003"
+      ],
+      "ownerSquad": "catalog",
+      "level": "e2e",
+      "file": "tests/catalog.ui.spec.ts",
+      "runnerTitle": "QLAB-CAT-UI-003: changed catalog price surfaces stale quote instead of confirming",
+      "variants": [
+        "chromium"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "ui"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    },
+    {
+      "testId": "QLAB-CAT-UI-004",
+      "criterionIds": [
+        "LAB-PRICE",
+        "LAB-RBAC"
+      ],
+      "scenarioIds": [
+        "SCENARIO-QLAB-CAT-UI-004"
+      ],
+      "ownerSquad": "catalog",
+      "level": "e2e",
+      "file": "tests/catalog.ui.spec.ts",
+      "runnerTitle": "QLAB-CAT-UI-004: editor changes price while shopper-only checkout stays unavailable",
+      "variants": [
+        "chromium"
+      ],
+      "components": [
+        "catalog",
+        "orders",
+        "ui"
+      ],
+      "criticality": "critical",
+      "mandatory": true,
+      "lifecycle": "operational",
+      "storyRevisionHash": "c7d302925ff1489a4483b8d771709cc00cb11f874c348bd06fd214703662fba9"
+    }
+  ]
+}

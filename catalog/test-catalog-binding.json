@@ -1,0 +1,12 @@
+{
+  "binding": "recorded-execution-commit-with-current-byte-equivalence",
+  "executedSuiteCommit": "a2f7ea68b07c1edace68239e462651fc9975db90",
+  "currentSuiteHead": "a2f7ea68b07c1edace68239e462651fc9975db90",
+  "executedAppCommit": "7fd57a9230d079492760e58b400bad7320ff5d31",
+  "executionPath": "evidence/2026-09-17T12-51-57.287Z/execution.json",
+  "executionSha256": "c7fcb151f7d94ec9da5555f88440c7fe8e093ad2901b3e808355c2afe994b9bb",
+  "reportPath": "evidence/2026-09-17T12-51-57.287Z/playwright-results.json",
+  "reportSha256": "3a3673222e4f80aefe5a85c869210ec479b716f378883c69f5e481bcfaeb6e67",
+  "catalogSha256": "c18ae317ba4dcc2e56a0487beae17ec073259711af789a841c593f6380384100",
+  "limitation": "Later documentation-only commits may have identical source bytes; the catalog always names the actually executed commit, never the later HEAD."
+}

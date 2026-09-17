@@ -1,0 +1,42 @@
+
+> quality-lab-catalog-tests@0.1.0 test:binding
+> node --test scripts/evidence-binding.test.mjs
+
+✔ accepts bound source bytes but preserves executed commit across a later metadata-only HEAD (2.0579ms)
+✔ rejects historical records missing binding version (0.8487ms)
+✔ rejects a changed report even if the old report passed (0.427ms)
+✔ rejects a changed discovery digest (0.4096ms)
+✔ rejects stale source/config/input: tests/example.spec.ts (0.3356ms)
+✔ rejects stale source/config/input: playwright.config.ts (0.2839ms)
+✔ rejects stale source/config/input: fixtures/lab.ts (0.286ms)
+✔ rejects stale source/config/input: package-lock.json (0.2866ms)
+✔ rejects stale source/config/input: catalog/business-contract.json (0.4176ms)
+✔ rejects stale source/config/input: team-manifest.json (0.4237ms)
+✔ rejects added test source not present during execution (0.3277ms)
+✔ rejects app source drift (0.3219ms)
+✔ rejects mutated built runtime (0.2072ms)
+✔ rejects mutated installed dependency (0.2553ms)
+✔ rejects source changed while the test process was running (0.331ms)
+✔ rejects failed or missing build commands (0.324ms)
+✔ rejects missing execution timestamps (0.3368ms)
+✔ rejects a report timestamp from before this execution (0.2745ms)
+✔ rejects report from another run even with recomputed digest (0.2737ms)
+✔ rejects empty discovery rather than accepting every on an empty array (0.1629ms)
+✔ rejects zero variants (0.2475ms)
+✔ rejects missing executed variants from a larger discovery (9.7845ms)
+✔ rejects duplicate discovered variants (0.2965ms)
+✔ rejects skipped, retried and failed results (0.4655ms)
+✔ rejects report path escape: ../secret (0.256ms)
+✔ rejects report path escape: /absolute (0.1285ms)
+✔ rejects report path escape: C:\secret (0.1386ms)
+✔ rejects report path escape: ..\secret (0.1309ms)
+✔ rejects report path escape: folder/../../secret (0.1319ms)
+✔ filesystem containment rejects parent/root/absolute paths before reading (2.2329ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.6845
