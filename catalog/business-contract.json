@@ -1,0 +1,19 @@
+{
+  "scopeId": "quality-lab-reference-catalog-v1",
+  "source": "PRD v1.0 specs/01-architecture.md section E",
+  "domainData": "original synthetic laboratory, not employer material",
+  "criteria": {
+    "LAB-READY": "Readiness honestly identifies its store and seed.",
+    "LAB-IDENTITY": "Version/readiness endpoints contain no secrets and do not pretend to verify an image.",
+    "LAB-AUTH": "Catalog data requires authentication; incorrect credentials issue no token.",
+    "LAB-PRODUCT": "Products retain stable IDs, active state, positive integer cent prices and price versions.",
+    "LAB-RBAC": "Only catalog editors may change products; shoppers cannot mutate the catalog.",
+    "LAB-PRICE": "Price changes increment priceVersion; zero, negative and fractional prices are invalid.",
+    "LAB-DISCOUNT": "At subtotal >=10000, discount is floor(subtotal*10/100), once on total; otherwise zero.",
+    "LAB-QUANTITY": "Each purchased line has integer quantity between 1 and 10 inclusive.",
+    "LAB-ACTIVE": "Inactive products cannot be quoted or purchased.",
+    "LAB-STALE": "Changed price versions make quote confirmation fail with PRICE_CHANGED.",
+    "LAB-TOTAL": "Client totals cannot override the authoritative quote amount.",
+    "LAB-IDEMPOTENCY": "Identical key/body replays the same order; key with changed body conflicts."
+  }
+}

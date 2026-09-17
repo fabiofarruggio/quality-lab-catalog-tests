@@ -1,0 +1,102 @@
+{
+  "runId": "2026-09-17T02-25-14.617Z",
+  "status": "passed",
+  "mode": "offline_replay",
+  "executionKind": "real_http_and_browser_against_isolated_memory_test_double",
+  "taskIds": [
+    "TASK-019",
+    "TASK-020"
+  ],
+  "node": "v24.21.0",
+  "platform": "win32",
+  "browserChannel": "chrome",
+  "commands": [
+    {
+      "command": [
+        "npm",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "F:\\Programacion\\qa-agent-platform\\quality-lab-catalog-tests",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "cwd": "F:\\Programacion\\qa-agent-platform\\quality-lab-catalog-tests",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "F:\\Programacion\\qa-agent-platform\\quality-lab-catalog-tests",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "F:\\Programacion\\qa-agent-platform\\quality-lab-catalog-tests",
+      "exitCode": 0
+    }
+  ],
+  "sourceHashes": {
+    "tests/catalog.api.spec.ts": "95626da15625361b4716a9da05028978ef217a37d60f65cf786da8abae1f0106",
+    "tests/catalog.ui.spec.ts": "941f12092144f25158697f026ac263a76632f3866afc2c195a705c8bc59c261f",
+    "tests/readiness.spec.ts": "e0bcefa9015e92d16c49599dc5040a73d30376f040664de501662d87e4e5f17d",
+    "fixtures/lab.ts": "a09b9886bac8c1995df3aa733617fe078b834fcc0248efb4c25c992387ef22b1",
+    "package.json": "a425c3f3b0cb66a125a532c37dc68e01cee6542e8c7752bd11020f1f752e6399",
+    "package-lock.json": "22c55b9c1130d0ce9528cab7e7abc49b67746daf6fee5e2da0a4c0d2b2bec5d9",
+    "playwright.config.ts": "5d8dcde719661b5e4ab1c91c49bc4d718d204c6622fcb33a95340c3c45d17579",
+    "team-manifest.json": "80aa563ce463cfb71da06354c62f8e78a63972649c7fc8b578bca1d7f60a6c4b",
+    "vendor/aqp-qa-framework-template-0.1.0.tgz": "e2d795cca1139a9227183ff176c2f66eefcca0f43aed428a3bd049af42d6b3f2",
+    "../quality-lab-app/src/server/domain.ts": "1fd3b677623030924d3fb3150623cf0946f221b0427215c60cb3c02c1ae18264",
+    "../quality-lab-app/src/server/http.ts": "897a9edb211402b9da1829cda8140240b58d2fceb605595dcbcfaa149188b3a7",
+    "../quality-lab-app/src/server/main.ts": "9b305c0df1d35492a2119d6eaf425b18892ffd9fb31c125ba15c3663f48e8b02",
+    "../quality-lab-app/src/server/postgres-store.ts": "fc88ccd60c516e2526688743bff95825f2f91305e42d0c7b25b0bcc72a7ea215",
+    "../quality-lab-app/src/server/seed.ts": "5b55d2ab1f311c35761c5e554303ba95c205e574ab692366babbde49df6b9210",
+    "../quality-lab-app/src/server/store.ts": "534d562eba9d42bffdc6f73417015fcbba45d63f84c36df25c28e97f5672f5b0",
+    "../quality-lab-app/src/shared/contracts.ts": "2969dd39828f6f77c2712a5aa3ce90c92990589d046f2f0e1c8872847b2888bc",
+    "../quality-lab-app/src/ui/assets.d.ts": "da5bf71d48cf909584a01c80b445f730507068f5b34c920f352e2bfcf0315e4c",
+    "../quality-lab-app/src/ui/main.tsx": "cdcbc3f73689d855e1d7634d843df432c51964723dd63ff6488e8c3cae4ad25c",
+    "../quality-lab-app/src/ui/styles.css": "5eb8e991ded31e199dd0788fb5a5cd08101fda0770705ea85b8bee657ad3ccc2",
+    "../quality-lab-app/dist/public/assets/index-BLh4Q0al.js": "47fa0f243ed1df575a78a1768ccb9cd861b4ef482486167637f03848b9817729",
+    "../quality-lab-app/dist/public/assets/index-DVsJhVNc.css": "1518e59481367def94391b57ab006d4a4ee3344f22d5cb1c94f10039cdad191d",
+    "../quality-lab-app/dist/public/index.html": "caf5acad26f2f0feeb68d0fc60fd77b87cdcb68528f42e7e2b881491c211dff2",
+    "../quality-lab-app/dist/server/domain.js": "6c26e8b57279dbc080c3bf7151674622776190978a9c0968a8c080822a61f4ae",
+    "../quality-lab-app/dist/server/domain.js.map": "178d7159cc64938abc88520ec0566eb72ed1603a1329b256710d6bfb2194421c",
+    "../quality-lab-app/dist/server/http.js": "d0f0cc48f9b5456cb2f75dc256b974ce4ee05b990b8a068ee6d744228084d2f9",
+    "../quality-lab-app/dist/server/http.js.map": "aa05f351862a6215f340836f56e67597e031b71439e7d4bad7d0569104b6b7ba",
+    "../quality-lab-app/dist/server/main.js": "6a9fd2eaabadaa69fd4acff882dd6f0a65cab0293ccb5015167aaad6206150b3",
+    "../quality-lab-app/dist/server/main.js.map": "b1030a0ea73d18f62cb7693ffc29af9c513c287cdb2692d82071e36efac13654",
+    "../quality-lab-app/dist/server/postgres-store.js": "a040399b5e77e9f7683ce7074597fe4352c29d6f3253c15ef10c904f0c62f309",
+    "../quality-lab-app/dist/server/postgres-store.js.map": "4b74691915d47da48465f5b7754d7a83361c24a10285fe17c979aa9d21c6f132",
+    "../quality-lab-app/dist/server/seed.js": "202051081838d5fd4f1bc7b05b5d44b43624b001decc910b5bcff3cb3994f054",
+    "../quality-lab-app/dist/server/seed.js.map": "7880f191f0d5d2783dab023486465c3ce4463c2e3c08904a3b36094413e292fc",
+    "../quality-lab-app/dist/server/store.js": "93643a423b1f8e88f81a8eb9b171b7b9351e871d7efe7625dd278f051266016a",
+    "../quality-lab-app/dist/server/store.js.map": "bcf36a2a9d4db6d18531903dcac14e1b68c8ca2e3fb58016e966178454640608",
+    "../quality-lab-app/dist/shared/contracts.js": "a92b9ae2b9324215f163dd64b39d66c20028a4902c36ea130ecfab632a799fb3",
+    "../quality-lab-app/dist/shared/contracts.js.map": "5d18a77e99f8db8bd2f5d6cbb8bc017252eed1afec0664ae9c1cc70e171b0807",
+    "../quality-lab-app/tests/support/memory-store.d.mts": "e09842601cea20202f51b019135e85c841fcd5ca79d856cdb48bf1b9df112890",
+    "../quality-lab-app/tests/support/memory-store.mjs": "133a44d69209f2184a61ef85632e5c5be5190f9db617b9c5ab324a1a0ec1863b",
+    "../quality-lab-app/scripts/test-server.mjs": "acbc0224b3fd46b4a608316e850f91bb9b0440dd02bc5ee7a3408409fcd2755e"
+  },
+  "suiteGitHead": "7965339aa7ceb2393aa2862c4c4cb5a55ffb2eef",
+  "appGitHead": "6cb2048a7b93819fb5df02b79b8f4c41cf04ae71",
+  "workingTree": "?? .gitattributes\n?? .github/\n?? README.md\n?? TEMPLATE_USAGE.md\n?? catalog/\n?? eslint.config.mjs\n?? evidence/\n?? fixtures/\n?? generation-record.json\n?? package-lock.json\n?? package.json\n?? playwright.config.ts\n?? scripts/\n?? team-manifest.json\n?? tests/\n?? tsconfig.json\n?? vendor/\n",
+  "limitations": [
+    "Each test launches a fresh real HTTP application process with isolated memory Store test double.",
+    "No PostgreSQL, Docker isolation, image digest, live LLM, SaaS or remote CI behavior is verified.",
+    "Working-tree hashes identify tested bytes; listed HEAD alone does not identify uncommitted source.",
+    "Browser contexts use a fresh Playwright profile; no personal logged-in profile is reused."
+  ]
+}

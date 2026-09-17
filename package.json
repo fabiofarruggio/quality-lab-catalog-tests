@@ -1,0 +1,28 @@
+{
+  "name": "quality-lab-catalog-tests",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.21.0"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "lint": "eslint .",
+    "test:list": "playwright test --list",
+    "test:api": "playwright test --project=api",
+    "test:ui": "playwright test --project=chromium",
+    "browser:install": "node scripts/install-browser.mjs",
+    "verify:local": "node scripts/verify-local.mjs",
+    "verify:generated": "node scripts/verify-generated.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@aqp/qa-framework-template": "file:vendor/aqp-qa-framework-template-0.1.0.tgz",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.3",
+    "eslint": "10.10.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.0"
+  }
+}

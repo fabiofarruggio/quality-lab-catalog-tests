@@ -1,0 +1,12 @@
+{
+  "observedDateUtc": "2026-09-17",
+  "command": "npm run browser:install",
+  "exitCode": 1,
+  "requestedBrowser": "Chrome for Testing 153.0.8010.12, Playwright Chromium v1243",
+  "destination": "node_modules/.cache/ms-playwright",
+  "observedFailure": "Request to https://cdn.playwright.dev/builds/cft/153.0.8010.12/win64/chrome-win64.zip timed out after 30000ms",
+  "builtInDownloadAttemptsObserved": 5,
+  "evidenceType": "observed command summary, not a complete raw transcript",
+  "boundedFallback": "Explicit AQP_BROWSER_CHANNEL=chrome using installed Chrome 153.0.8010.36 with a fresh Playwright profile; verified by real browser tests",
+  "globalBrowserInstalledOrModified": false
+}

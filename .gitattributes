@@ -1,0 +1,7 @@
+* text=auto eol=lf
+vendor/** -text whitespace=cr-at-eol,-blank-at-eof
+team-manifest.json -text whitespace=cr-at-eol,-blank-at-eof
+generation-record.json -text whitespace=cr-at-eol,-blank-at-eof
+catalog/** -text whitespace=cr-at-eol,-blank-at-eof
+evidence/** -text whitespace=cr-at-eol,-blank-at-eof
+*.tgz -text

@@ -1,0 +1,34 @@
+
+> quality-lab-catalog-tests@0.1.0 test
+> playwright test
+
+
+Running 25 tests using 2 workers
+
+  ok  2 [api] › tests\catalog.api.spec.ts:13:1 › QLAB-CAT-002: unauthenticated requests cannot read catalog (1.0s)
+  ok  1 [api] › tests\catalog.api.spec.ts:3:1 › QLAB-CAT-001: readiness and version expose honest local identity (1.1s)
+  ok  3 [api] › tests\catalog.api.spec.ts:17:1 › QLAB-CAT-003: invalid credentials do not issue a token (191ms)
+  ok  4 [api] › tests\catalog.api.spec.ts:23:1 › QLAB-CAT-004: seeded products have integer positive prices and active status (192ms)
+  ok  6 [api] › tests\catalog.api.spec.ts:42:1 › QLAB-CAT-006: catalog editor updates price and increments price version (189ms)
+  ok  5 [api] › tests\catalog.api.spec.ts:36:1 › QLAB-CAT-005: shopper cannot mutate a product and forbidden write leaves data intact (196ms)
+  ok  8 [api] › tests\catalog.api.spec.ts:50:3 › QLAB-CAT-007-negative: editor cannot store an invalid price (193ms)
+  ok  7 [api] › tests\catalog.api.spec.ts:50:3 › QLAB-CAT-007-zero: editor cannot store an invalid price (196ms)
+  ok  9 [api] › tests\catalog.api.spec.ts:50:3 › QLAB-CAT-007-fraction: editor cannot store an invalid price (198ms)
+  ok 10 [api] › tests\catalog.api.spec.ts:58:3 › QLAB-CAT-008-9999: discount threshold uses server-side integer cents (204ms)
+  ok 11 [api] › tests\catalog.api.spec.ts:58:3 › QLAB-CAT-008-10000: discount threshold uses server-side integer cents (198ms)
+  ok 12 [api] › tests\catalog.api.spec.ts:58:3 › QLAB-CAT-008-10001: discount threshold uses server-side integer cents (203ms)
+  ok 13 [api] › tests\catalog.api.spec.ts:69:3 › QLAB-CAT-009-0: quote rejects invalid quantity (205ms)
+  ok 14 [api] › tests\catalog.api.spec.ts:69:3 › QLAB-CAT-009-11: quote rejects invalid quantity (191ms)
+  ok 15 [api] › tests\catalog.api.spec.ts:69:3 › QLAB-CAT-009-1.5: quote rejects invalid quantity (193ms)
+  ok 16 [api] › tests\catalog.api.spec.ts:75:1 › QLAB-CAT-010: quantity boundaries 1 and 10 remain purchasable (202ms)
+  ok 17 [api] › tests\catalog.api.spec.ts:84:1 › QLAB-CAT-011: inactive product cannot be quoted (188ms)
+  ok 18 [api] › tests\catalog.api.spec.ts:91:1 › QLAB-CAT-012: changed price invalidates an existing quote (210ms)
+  ok 19 [api] › tests\catalog.api.spec.ts:102:1 › QLAB-CAT-013: client cannot override authoritative quote total (195ms)
+  ok 20 [api] › tests\catalog.api.spec.ts:111:1 › QLAB-CAT-014: identical confirmation key replays one order and changed body conflicts (213ms)
+  ok 21 [api] › tests\readiness.spec.ts:3:1 › QLAB-CATALOG-READINESS: lab is ready (174ms)
+  ok 22 [chromium] › tests\catalog.ui.spec.ts:20:1 › QLAB-CAT-UI-001: shopper sees synthetic catalog and cannot purchase inactive item (3.0s)
+  ok 23 [chromium] › tests\catalog.ui.spec.ts:28:1 › QLAB-CAT-UI-002: quoted discount and repeated confirmation preserve one order (3.1s)
+  ok 24 [chromium] › tests\catalog.ui.spec.ts:43:1 › QLAB-CAT-UI-003: changed catalog price surfaces stale quote instead of confirming (712ms)
+  ok 25 [chromium] › tests\catalog.ui.spec.ts:55:1 › QLAB-CAT-UI-004: editor changes price while shopper-only checkout stays unavailable (646ms)
+
+  25 passed (10.2s)

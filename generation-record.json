@@ -1,0 +1,21 @@
+{
+  "templateVersion": "0.1.0",
+  "contractVersion": "1.0.0",
+  "manifestSha256": "80aa563ce463cfb71da06354c62f8e78a63972649c7fc8b578bca1d7f60a6c4b",
+  "packageSha256": "e2d795cca1139a9227183ff176c2f66eefcca0f43aed428a3bd049af42d6b3f2",
+  "operation": "local_scaffold_generation",
+  "provenancePreserved": true,
+  "remoteResourcesCreated": false,
+  "generatedFiles": [
+    "package.json",
+    "team-manifest.json",
+    "tsconfig.json",
+    "playwright.config.ts",
+    "tests/readiness.spec.ts",
+    "catalog/test-definitions.json",
+    "TEMPLATE_USAGE.md",
+    "scripts/ci-check.mjs"
+  ],
+  "originalPackageSha256": "8098eb8293950a4b0d094f5dd7624c0bf0e680938d318c656f2e0dc6b2046a60",
+  "localUnreleasedBuildUpdated": true
+}

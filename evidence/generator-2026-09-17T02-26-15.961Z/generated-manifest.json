@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "team-manifest-catalog-local-v1",
+  "mode": "offline_replay",
+  "provenance": {
+    "platformCommit": "7965339aa7ceb2393aa2862c4c4cb5a55ffb2eef",
+    "policyHash": "1baf42762a77bf0e7eb6f5d6c721317fc98e1b2bf06276360f3cafc2262240a2",
+    "agentRegistryHash": "1477c74db4ad9395e20c7eaf1ca8b95bdb8e6c4f168f75f16ef840ae5257e6ea",
+    "createdAt": "2026-09-17T02:04:47.8658540Z",
+    "syntheticExample": false
+  },
+  "project": "quality-lab-catalog",
+  "ownerSquad": "catalog",
+  "applicationRepository": "quality-lab-app",
+  "testRepository": "quality-lab-catalog-tests",
+  "templateVersion": "0.1.0",
+  "capabilities": [
+    "api",
+    "e2e",
+    "contract"
+  ],
+  "jiraProjectKey": "QLAB",
+  "knowledgePageIds": [],
+  "allowedWritePaths": [
+    "tests/**",
+    "fixtures/**",
+    "catalog/**"
+  ],
+  "protectedPaths": [
+    ".github/**",
+    "AGENTS.md",
+    "package.json",
+    "package-lock.json"
+  ],
+  "allowedEnvironmentOrigins": [
+    "http://127.0.0.1:64871"
+  ],
+  "releasePolicy": "standard",
+  "humanReviewerRoles": [
+    "catalog-reviewer"
+  ]
+}
