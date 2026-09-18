@@ -2,6 +2,7 @@
   "name": "quality-lab-catalog-tests",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": "24.21.0"

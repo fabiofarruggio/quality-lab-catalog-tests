@@ -57,3 +57,7 @@ The TestCatalog always names the **recorded execution commit**, never a later HE
 ## Rollback
 
 This work unit comprises consumer configuration, versioned library archive, fixtures, tests, catalog definitions, manual-only CI preparation and evidence. It can be removed without modifying the immutable PRD, application repository or any remote resource. Preserve the coordinator-created `AGENTS.md` and repository bootstrap files.
+
+## License
+
+Original code is licensed under the MIT License in LICENSE. Dependencies and authored third-party materials retain their respective licenses.
