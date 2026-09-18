@@ -13,5 +13,5 @@ Read ../GOAL-GPT-6-Astra-Ultra-Agentic-Quality-Platform.md and the immutable ../
 - Receipts/review mode is disabled/unmanaged unless explicitly enabled by the owner. Do not launch review workflows.
 - Code, identifiers and comments use English. Portfolio copy is professional Spanish as required by the Goal.
 - Record task IDs, checks, limitations and rollback boundary with every implementation increment.
-- Coordinator state lives in ../qa-agent-platform/docs/implementation/EXECUTION_PLAN.md, task-state.yaml and CHECKPOINT.md. Keep original package unchanged.
+- Coordinator state lives in the workspace-private backup outside this public checkout. Keep plans, task state, checkpoints and operational evidence out of this repository; keep the original package unchanged.
 - Before structural exploration use CodeGraph on this repository; fall back only after initialization/use failure. Never reuse another repository index.

@@ -2,6 +2,8 @@ node_modules/
 dist/
 coverage/
 .codegraph/
+# Generated verification receipts are private workspace state.
+/evidence/
 .env
 .env.*
 !.env.example

@@ -10,7 +10,7 @@
 - [Template usage — English](../TEMPLATE_USAGE.en.md)
 - [Documentation policy — Spanish](DOCUMENTATION-POLICY.md)
 - [Documentation policy](DOCUMENTATION-POLICY.en.md)
-- [Generated evidence](../evidence/)
+- Generated evidence is retained in the workspace's private backup and is not published.
 - [MIT license](../LICENSE)
 
-Evidence, reports, screenshots, `AGENTS.md` and `vendor/` content are linked without editing them to preserve provenance.
+Evidence receipts, reports, screenshots, `AGENTS.md` and `vendor/` content retain their provenance in the private backup and are not part of the public release.

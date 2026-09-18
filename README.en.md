@@ -23,7 +23,7 @@ npm run verify:local
 
 `verify:local` requires committed, byte-clean suite and application inputs before executing tests. It repeats clean installation, lint, typecheck and binding-unit checks, copies exact committed application blobs into `.verification-work/<run-id>/app`, installs/builds that isolated copy, discovers the complete suite and executes it. It never rebuilds or trusts mutable `dist` in the sibling application repository. Both repositories must remain source-stable during the run.
 
-The execution record binds the report and discovery by SHA-256, run ID and time, plus before/after committed-source, installed-dependency and staged-runtime hashes. Logs, reports and a real screenshot are saved in a fresh `evidence/<UTC-run-id>/`. Staging is retained locally for admission checks and never committed. The fixture launches a separate HTTP process and fresh memory store **for every test**, uses synthetic accounts and terminates each child in teardown.
+The execution record binds the report and discovery by SHA-256, run ID and time, plus before/after committed-source, installed-dependency and staged-runtime hashes. Logs, reports and a real screenshot are saved locally in a fresh `evidence/<UTC-run-id>/`; those receipts remain in the workspace's private backup and are not published. Staging is retained locally for admission checks and never committed. The fixture launches a separate HTTP process and fresh memory store **for every test**, uses synthetic accounts and terminates each child in teardown.
 
 ## What the checks prove
 
@@ -58,7 +58,7 @@ The TestCatalog always names the **recorded execution commit**, never a later HE
 
 ## Rollback
 
-This work unit comprises consumer configuration, versioned library archive, fixtures, tests, catalog definitions, manual-only CI preparation and evidence. It can be removed without modifying the immutable PRD, application repository or any remote resource. Preserve the coordinator-created `AGENTS.md` and repository bootstrap files.
+This work unit comprises consumer configuration, versioned library archive, fixtures, tests, catalog definitions, manual-only CI preparation and local verification. Generated receipts remain in the workspace's private backup. It can be removed without modifying the immutable PRD, application repository or any remote resource. Preserve the coordinator-created `AGENTS.md` and repository bootstrap files.
 
 ## License
 
@@ -66,4 +66,4 @@ Original code is licensed under the MIT License in LICENSE. Dependencies and aut
 
 ## Documentation policy
 
-`README.md` is the primary Spanish entry point and `TEMPLATE_USAGE.md` is the Spanish-first template guide. Their complete English companions are [`README.en.md`](README.en.md) and [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). `AGENTS.md` and historical `evidence/` notes keep their original language and bytes to protect instructions and evidence provenance; third-party/vendor documents are not translated.
+`README.md` is the primary Spanish entry point and `TEMPLATE_USAGE.md` is the Spanish-first template guide. Their complete English companions are [`README.en.md`](README.en.md) and [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). `AGENTS.md` and historical verification receipts keep their original language and bytes in the private backup to protect instructions and evidence provenance; third-party/vendor documents are not translated.

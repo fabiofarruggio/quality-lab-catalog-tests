@@ -10,7 +10,7 @@
 - [Template usage — English](../TEMPLATE_USAGE.en.md)
 - [Política de documentación](DOCUMENTATION-POLICY.md)
 - [Documentation policy — English](DOCUMENTATION-POLICY.en.md)
-- [Evidencia generada](../evidence/)
+- La evidencia generada se conserva en el respaldo privado del workspace y no se publica.
 - [Licencia MIT](../LICENSE)
 
-La evidencia, los reportes, las capturas, `AGENTS.md` y el contenido de `vendor/` se enlazan sin editar para conservar su procedencia.
+Los recibos de evidencia, reportes, capturas, `AGENTS.md` y el contenido de `vendor/` conservan su procedencia en el respaldo privado y no forman parte de la publicación pública.

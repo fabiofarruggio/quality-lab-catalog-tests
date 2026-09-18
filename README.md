@@ -23,7 +23,7 @@ npm run verify:local
 
 `verify:local` exige inputs versionados de suite y aplicación, sin cambios de bytes, antes de ejecutar. Repite instalación limpia, lint, typecheck y checks de binding, copia los blobs exactos de la aplicación comprometidos a `.verification-work/<run-id>/app`, instala/construye esa copia aislada, descubre la suite completa y ejecuta las pruebas. Nunca reconstruye ni confía en un `dist` mutable del repositorio hermano. Ambos repositorios deben permanecer estables durante la corrida.
 
-El registro de ejecución vincula reportes y discovery por SHA-256, run ID y hora, además de hashes antes/después de fuente comprometida, dependencias instaladas y runtime preparado. Logs, reportes y una captura real se guardan en un `evidence/<UTC-run-id>/` nuevo. El staging se conserva localmente para checks de admisión y nunca se commitea. El fixture inicia un proceso HTTP separado y un store en memoria nuevo **para cada test**, usa cuentas sintéticas y termina cada hijo en teardown.
+El registro de ejecución vincula reportes y discovery por SHA-256, run ID y hora, además de hashes antes/después de fuente comprometida, dependencias instaladas y runtime preparado. Logs, reportes y una captura real se guardan localmente en un `evidence/<UTC-run-id>/` nuevo; esos recibos quedan en el respaldo privado del workspace y no se publican. El staging se conserva localmente para checks de admisión y nunca se commitea. El fixture inicia un proceso HTTP separado y un store en memoria nuevo **para cada test**, usa cuentas sintéticas y termina cada hijo en teardown.
 
 ## Qué demuestran los checks
 
@@ -58,11 +58,11 @@ El `TestCatalog` siempre nombra el **commit de ejecución registrado**, nunca un
 
 ## Rollback
 
-Esta unidad comprende configuración del consumer, archivo versionado de la biblioteca, fixtures, tests, definiciones de catálogo, preparación de CI y evidencia. Se puede retirar sin modificar el PRD inmutable, el repositorio de aplicación ni recursos remotos. Conserve `AGENTS.md` y los archivos de bootstrap del repositorio.
+Esta unidad comprende configuración del consumer, archivo versionado de la biblioteca, fixtures, tests, definiciones de catálogo, preparación de CI y verificación local. Los recibos generados se conservan en el respaldo privado del workspace. Se puede retirar sin modificar el PRD inmutable, el repositorio de aplicación ni recursos remotos. Conserve `AGENTS.md` y los archivos de bootstrap del repositorio.
 
 ## Política de documentación
 
-Este `README.md` es la entrada principal en español. La versión completa en inglés está en [`README.en.md`](README.en.md). `TEMPLATE_USAGE.md` también es español-first y tiene su companion [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). `AGENTS.md` y las notas históricas de `evidence/` conservan su idioma y bytes originales para proteger instrucciones y procedencia; los documentos de terceros/vendor no se traducen.
+Este `README.md` es la entrada principal en español. La versión completa en inglés está en [`README.en.md`](README.en.md). `TEMPLATE_USAGE.md` también es español-first y tiene su companion [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). `AGENTS.md` y los recibos históricos de verificación conservan su idioma y bytes originales en el respaldo privado para proteger instrucciones y procedencia; los documentos de terceros/vendor no se traducen.
 
 ## Licencia
 

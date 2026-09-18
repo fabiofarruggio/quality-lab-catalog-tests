@@ -1,7 +1,0 @@
-{
-  "reason": "Snapshot stamped a later commit onto an unbound historical report; never admissible as execution evidence",
-  "sha256": "6825c37e3b2203ca68a24984b732a3a3047c5c3fe55ba91a15e906d811998d43",
-  "source": "catalog/test-catalog.json",
-  "preservedUnchanged": true,
-  "status": "NONADMISSIBLE"
-}
