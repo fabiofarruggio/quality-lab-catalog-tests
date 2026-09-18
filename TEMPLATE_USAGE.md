@@ -1,9 +1,15 @@
 # quality-lab-catalog-tests
 
-Generated for the **simulated catalog squad** with template 0.1.0.
+**Idioma / Language:** Español (principal) · [English](TEMPLATE_USAGE.en.md)
 
-Install with `npm install --ignore-scripts`, commit the resulting lock, then reproduce with `npm ci --ignore-scripts`. Run `npm run typecheck` and `npm test` against an explicitly allowed local lab origin. The versioned common library is installed from the bundled tarball, not copied source.
+Generado para el **squad simulado de Catalog** con template `0.1.0`.
 
-QLAB is a planned logical project key, not evidence of an existing Jira project. Manifest repository values are local logical names, not remote resource IDs. No SaaS resources or inference are used. A generated suite is initially unverified. The fixture HTTP allowlist is not a sandbox for arbitrary generated code.
+Instale con `npm install --ignore-scripts`, realice el commit del lock resultante y reproduzca con `npm ci --ignore-scripts`. Ejecute `npm run typecheck` y `npm test` contra un origen de laboratorio local permitido explícitamente. La biblioteca común versionada se instala desde el tarball incluido; no se copia el código fuente.
 
-CI must receive a separately verified candidate environment. A readiness check alone proves neither image identity nor regression coverage. No remote workflow is enabled by generation.
+QLAB es una clave lógica de proyecto planificada, no evidencia de un proyecto Jira existente. Los valores de repositorio del manifest son nombres lógicos locales, no IDs de recursos remotos. No se usan recursos SaaS ni inferencia. Una suite generada inicialmente está sin verificar. La allowlist HTTP del fixture no es un sandbox para código generado arbitrario.
+
+CI debe recibir un ambiente candidato verificado por separado. Un readiness check por sí solo no prueba identidad de imagen ni cobertura de regresión. Ningún workflow remoto se habilita por generación.
+
+## Política de documentación
+
+Este documento es la guía principal en español; la versión completa en inglés está en [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). Los artefactos generados, las notas de evidencia y los documentos de terceros conservan su idioma y bytes originales.

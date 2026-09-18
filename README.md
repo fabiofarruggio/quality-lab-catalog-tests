@@ -1,10 +1,12 @@
-# Catalog reference regression
+# Regresión de referencia de Catalog
 
-TASK-020 / REQ-TEST-001: **21 real HTTP checks and four real-browser checks** for the explicitly simulated Catalog squad. This consumer was generated outside the template repository and installs the common fixture library from its versioned, hash-recorded local tarball.
+**Idioma / Language:** Español (principal) · [English](README.en.md)
 
-## Reproduce
+`TASK-020` / `REQ-TEST-001`: **21 checks HTTP reales y cuatro checks de navegador real** para el squad explícitamente simulado de Catalog. Este consumer fue generado fuera del repositorio de template e instala la biblioteca común de fixtures desde su tarball local versionado y con hash registrado.
 
-Use Node **24.21.0**, npm **11.19.0**, and the sibling `quality-lab-app` repository. First install/build that application's pinned dependencies using its README. Then, from this repository:
+## Reproducir
+
+Use Node **24.21.0**, npm **11.19.0** y el repositorio hermano `quality-lab-app`. Primero instale y construya las dependencias fijadas de esa aplicación siguiendo su README. Luego, desde este repositorio:
 
 ```powershell
 npm ci --ignore-scripts
@@ -12,52 +14,56 @@ npm run typecheck
 npm run test:api
 ```
 
-For browser checks, either run `npm run browser:install` to install the matching Chromium in the repository-local `node_modules/.cache/ms-playwright` cache, or explicitly select an installed Chrome/Edge channel supported by Playwright. The observed Windows run used:
+Para los checks de navegador, ejecute `npm run browser:install` para instalar Chromium en la caché local `node_modules/.cache/ms-playwright`, o seleccione explícitamente un canal Chrome/Edge instalado y soportado por Playwright. La ejecución observada en Windows usó:
 
 ```powershell
 $env:AQP_BROWSER_CHANNEL = 'chrome'
 npm run verify:local
 ```
 
-`verify:local` requires committed, byte-clean suite and application inputs before executing tests. It repeats clean installation, lint, typecheck and binding-unit checks, copies exact committed application blobs into `.verification-work/<run-id>/app`, installs/builds that isolated copy, discovers the complete suite and executes it. It never rebuilds or trusts mutable `dist` in the sibling application repository. Both repositories must remain source-stable during the run.
+`verify:local` exige inputs versionados de suite y aplicación, sin cambios de bytes, antes de ejecutar. Repite instalación limpia, lint, typecheck y checks de binding, copia los blobs exactos de la aplicación comprometidos a `.verification-work/<run-id>/app`, instala/construye esa copia aislada, descubre la suite completa y ejecuta las pruebas. Nunca reconstruye ni confía en un `dist` mutable del repositorio hermano. Ambos repositorios deben permanecer estables durante la corrida.
 
-The execution record binds the report and discovery by SHA-256, run ID and time, plus before/after committed-source, installed-dependency and staged-runtime hashes. Logs, reports and a real screenshot are saved in a fresh `evidence/<UTC-run-id>/`. Staging is retained locally for admission checks and never committed. The fixture launches a separate HTTP process and fresh memory store **for every test**, uses synthetic accounts and terminates each child in teardown.
+El registro de ejecución vincula reportes y discovery por SHA-256, run ID y hora, además de hashes antes/después de fuente comprometida, dependencias instaladas y runtime preparado. Logs, reportes y una captura real se guardan en un `evidence/<UTC-run-id>/` nuevo. El staging se conserva localmente para checks de admisión y nunca se commitea. El fixture inicia un proceso HTTP separado y un store en memoria nuevo **para cada test**, usa cuentas sintéticas y termina cada hijo en teardown.
 
-## What the checks prove
+## Qué demuestran los checks
 
-### Isolated PostgreSQL profile (integration pending)
+### Perfil PostgreSQL aislado (integración pendiente)
 
-`playwright.sandbox.config.ts` selects a separate `isolated_postgres` fixture at fixed loopback `127.0.0.1:3000`. Only the trusted platform lab runner may supply `AQP_EXPECTED_APP_COMMIT` and provision the ephemeral database/application/browser containers. This profile requires Chromium's sandbox, disables retries and preserves all 25 reference test IDs and business assertions. The two environment-identity assertions explicitly distinguish PostgreSQL from the default memory test double.
+`playwright.sandbox.config.ts` selecciona un fixture separado `isolated_postgres` en `127.0.0.1:3000`. Sólo el runner de laboratorio confiable puede proporcionar `AQP_EXPECTED_APP_COMMIT` y aprovisionar los contenedores efímeros de base de datos/aplicación/navegador. Este perfil requiere el sandbox de Chromium, desactiva retries y conserva los 25 IDs de referencia y sus aserciones de negocio. Las dos aserciones de identidad de ambiente distinguen explícitamente PostgreSQL del test double de memoria predeterminado.
 
-The profile does not provision Docker, expose a database credential or attest an image itself. Its source passed lint, typecheck and 30 evidence-binding tests before commit; the complete 25-variant isolated PostgreSQL run remains pending. Do not reuse the historical memory-store snapshot as evidence for this new profile or source revision. Rollback is limited to this configuration, its fixture branch, two identity assertions and the added configuration hash input.
+El perfil no aprovisiona Docker, expone credenciales de base de datos ni atestigua una imagen por sí mismo. Su fuente pasó lint, typecheck y 30 tests de binding de evidencia antes del commit; la corrida completa de 25 variantes con PostgreSQL aislado sigue pendiente. No reutilices el snapshot histórico del store de memoria como evidencia para este perfil o revisión de fuente. Rollback se limita a esta configuración, su rama de fixture, dos aserciones de identidad y el input de hash agregado.
 
-Authentication and authorization, seed values, positive integer prices, version increments, discount thresholds 9999/10000/10001, quantity boundaries/negatives, inactive items, stale quotes, client-total rejection, idempotent confirmation, and corresponding UI journeys. The shared `@aqp/qa-framework-template` library remains installed code, not a copied fixture fork.
+Incluye autenticación y autorización, valores seed, precios enteros positivos, incrementos de versión, umbrales de descuento 9999/10000/10001, límites/cantidades negativas, artículos inactivos, quotes obsoletas, rechazo del total del cliente, confirmación idempotente y journeys de UI correspondientes. La biblioteca compartida `@aqp/qa-framework-template` permanece instalada como código; no se copia un fork de fixtures.
 
-`catalog/business-contract.json` states original laboratory criteria. `catalog/test-definitions.json` maps observed runner IDs to those criteria. It is explicitly not an ExecutionEvidence record or remote TMS catalog. After the source is committed, a schema-valid TestCatalog can be created without inventing a commit:
+`catalog/business-contract.json` define criterios originales de laboratorio. `catalog/test-definitions.json` mapea IDs observados del runner a esos criterios. No es un `ExecutionEvidence` ni un catálogo TMS remoto. Luego de commitear la fuente, se puede crear un `TestCatalog` válido sin inventar un commit:
 
 ```powershell
 node scripts/catalog.mjs definitions evidence/<run-id>/playwright-results.json
 node scripts/catalog.mjs snapshot evidence/<run-id>/playwright-results.json
 ```
 
-Both commands require the adjacent version-2 execution record; historical unbound reports are rejected rather than retrofitted. Snapshot admission rechecks all relevant source/configuration/fixture/lock/manifest/business-contract bytes against their recorded Git blobs and the retained staged runtime/dependencies. Empty discovery, missing variants, retries, skips, stale/mutated reports, path escapes and input drift fail closed.
+Ambos comandos requieren el registro de ejecución adyacente versión 2. La admisión del snapshot vuelve a comprobar todos los bytes relevantes de fuente/configuración/fixture/lock/manifest/business-contract contra sus blobs Git registrados y contra runtime/dependencias preparados y retenidos. Discovery vacío, variantes faltantes, retries, skips, reportes stale/mutados, escapes de path y drift de inputs fallan cerrado.
 
-The TestCatalog always names the **recorded execution commit**, never a later HEAD. A documentation-only later commit may be byte-equivalent; that equivalence is explicitly recorded in `catalog/test-catalog-binding.json`. Hashes establish consistency, not a signed attestation of trusted execution. Commit this source fix before the first new 25-test verification run.
+El `TestCatalog` siempre nombra el **commit de ejecución registrado**, nunca un HEAD posterior. Un commit posterior sólo documental puede ser byte-equivalente; esa equivalencia se registra explícitamente en `catalog/test-catalog-binding.json`. Los hashes establecen consistencia, no una atestación firmada de ejecución confiable. Realice el commit de este fix de fuente antes de la primera nueva corrida de verificación de 25 tests.
 
-## Honest limits
+## Límites honestos
 
-- Product profile is `offline_replay`; test execution itself is live local HTTP/browser behavior, not recorded responses. No model reasoning or API inference was invoked.
-- Storage is explicitly `isolated_test_double`. **PostgreSQL, Docker/secret-free sandbox isolation and verified image identity are not established.** Passing these tests cannot close those M1 gate conditions.
-- The Chromium 153.0.8010.12 download failed with network timeouts. Actual UI evidence used installed Chrome 153.0.8010.36 in a fresh Playwright-controlled profile; no personal browser session was reused. This is a recorded deviation from bundled-browser reproducibility, not a hidden retry success.
-- The process launcher forwards an environment allowlist, not SaaS/model credentials. That is not filesystem or operating-system sandboxing. These are maintainer-authored reference tests, not product-agent generated code.
-- QLAB and repository names are planned logical identities; there are no claimed Jira/GitHub/Vansah resources. SaaS and remote CI remain unexecuted and require authorization.
-- `.github/workflows/verify.yml` is manual-only preparation. It requires an authorized app repository and exact app commit and currently runs only the HTTP/memory-store reference; it is not a release gate or PostgreSQL proof.
-- Synthetic login credentials are intentionally public demonstration data, not production authentication.
+- El perfil de producto es `offline_replay`; la ejecución de tests sí es comportamiento HTTP/browser local real, no replay de respuestas grabadas. No se invocó razonamiento de modelo ni inferencia por API.
+- El storage es explícitamente `isolated_test_double`. **No están establecidos PostgreSQL, Docker/sandbox sin secretos ni identidad verificada de imagen.** Pasar estos tests no cierra esas condiciones del gate M1.
+- La descarga de Chromium 153.0.8010.12 falló por timeouts de red. La evidencia de UI usó Chrome 153.0.8010.36 instalado y un perfil nuevo controlado por Playwright; no se reutilizó el browser personal. Es una desviación registrada de la reproducibilidad con browser bundled, no un retry oculto exitoso.
+- El launcher reenvía una allowlist de entorno, no credenciales SaaS/modelo. Eso no es sandboxing de filesystem ni del sistema operativo. Son tests de referencia autorados por mantenimiento, no código generado por agentes de producto.
+- QLAB y los nombres de repositorios son identidades lógicas planificadas; no se afirman recursos Jira/GitHub/Vansah existentes. SaaS y CI remoto siguen sin ejecutarse y requieren autorización.
+- `.github/workflows/verify.yml` es preparación manual-only. Requiere un repositorio de aplicación autorizado y commit exacto, y actualmente ejecuta sólo la referencia HTTP/store de memoria; no es un release gate ni una prueba de PostgreSQL.
+- Las credenciales sintéticas de login son datos públicos de demostración intencionales, no autenticación de producción.
 
 ## Rollback
 
-This work unit comprises consumer configuration, versioned library archive, fixtures, tests, catalog definitions, manual-only CI preparation and evidence. It can be removed without modifying the immutable PRD, application repository or any remote resource. Preserve the coordinator-created `AGENTS.md` and repository bootstrap files.
+Esta unidad comprende configuración del consumer, archivo versionado de la biblioteca, fixtures, tests, definiciones de catálogo, preparación de CI y evidencia. Se puede retirar sin modificar el PRD inmutable, el repositorio de aplicación ni recursos remotos. Conserve `AGENTS.md` y los archivos de bootstrap del repositorio.
 
-## License
+## Política de documentación
 
-Original code is licensed under the MIT License in LICENSE. Dependencies and authored third-party materials retain their respective licenses.
+Este `README.md` es la entrada principal en español. La versión completa en inglés está en [`README.en.md`](README.en.md). `TEMPLATE_USAGE.md` también es español-first y tiene su companion [`TEMPLATE_USAGE.en.md`](TEMPLATE_USAGE.en.md). `AGENTS.md` y las notas históricas de `evidence/` conservan su idioma y bytes originales para proteger instrucciones y procedencia; los documentos de terceros/vendor no se traducen.
+
+## Licencia
+
+El código original está bajo la Licencia MIT en [LICENSE](LICENSE). Las dependencias y materiales de terceros autorados conservan sus licencias respectivas.
